@@ -1,0 +1,2 @@
+from relatorioCadastro import listaProdutos
+
