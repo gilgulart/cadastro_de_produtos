@@ -17,13 +17,13 @@ def salvaProdutos(produtos):
 
     with open('produtos.txt', 'w', encoding='utf8') as arquivo:
         arquivo.write(f"Relatório de Produtos Cadastrados - {data_atual.strftime('%d/%m/%Y %H:%M:%S')}\n\n")
-        arquivo.write(f"SKU ------------------ Produto ------------------ Preço ------------------ Custo\n\n")
+        arquivo.write(f"SKU ------------------ Produto ------------------ UN ------------------ Preço ------------------ Custo\n\n")
     
         arquivo.writelines(produtos_antigos)
     
     with open('produtos.txt', 'a', encoding='utf8') as arquivo:
         for produto in produtos:
-            arquivo.write(f"{produto[0]} ------------------ {produto[1]} ------------------ R${produto[2]} ------------------ R${produto[3]}\n")
+            arquivo.write(f"{produto[0]} ------------------ {produto[1]} ------------------ {produto[2]} ------------------ R${produto[3]} ------------------ R${produto[4]}\n")
    
     return arquivo
    
@@ -41,7 +41,7 @@ def listaProdutos():
             data = linha.strip().split(' ------------------ ')
             print(linha)
             produtos.append(
-                [data[0], data[1], float(data[2].replace("R$", "")), float(data[3].replace("R$", ""))]
+                [data[0], data[1], data[2] , float(data[3].replace("R$", "")), float(data[4].replace("R$", ""))]
             )
-    print(produtos)
+            
     return produtos
